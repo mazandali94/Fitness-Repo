@@ -34,31 +34,34 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                ImageSlideshow(
-                  width: double.infinity,
-                  height: 200,
-                  initialPage: 0,
-                  indicatorColor: Colors.blue,
-                  indicatorBackgroundColor: Colors.grey,
-                  onPageChanged: (value) {
-                    debugPrint('Page changed: $value');
-                  },
-                  autoPlayInterval: 3000,
-                  isLoop: true,
-                  children: [
-                    Image.asset(
-                      'assets/images/image_1.jpg',
-                      fit: BoxFit.cover,
-                    ),
-                    Image.asset(
-                      'assets/images/image_2.jpg',
-                      fit: BoxFit.cover,
-                    ),
-                    Image.asset(
-                      'assets/images/image_3.jpg',
-                      fit: BoxFit.cover,
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.all(25.0),
+                  child: ImageSlideshow(
+                    width: double.infinity,
+                    height: 200,
+                    initialPage: 0,
+                    indicatorColor: Colors.blue,
+                    indicatorBackgroundColor: Colors.grey,
+                    onPageChanged: (value) {
+                      debugPrint('Page changed: $value');
+                    },
+                    autoPlayInterval: 3000,
+                    isLoop: true,
+                    children: [
+                      Image.asset(
+                        'assets/images/image_1.jpg',
+                        fit: BoxFit.cover,
+                      ),
+                      Image.asset(
+                        'assets/images/image_2.jpg',
+                        fit: BoxFit.cover,
+                      ),
+                      Image.asset(
+                        'assets/images/image_3.jpg',
+                        fit: BoxFit.cover,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
