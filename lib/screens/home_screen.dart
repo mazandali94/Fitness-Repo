@@ -1,71 +1,79 @@
+import 'package:fitt_app/widgets/image_list.dart';
+import 'package:fitt_app/widgets/image_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Stack(
-              clipBehavior: Clip.none,
-              fit: StackFit.loose,
-              children: [
-                Expanded(
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 0.3,
-                    color: const Color(0xFFF58591),
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Stack(
+                clipBehavior: Clip.none,
+                fit: StackFit.loose,
+                alignment: AlignmentDirectional.topCenter,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.3,
+                      color: const Color(0xFFF58591),
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Row(
-                    // mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Flexible(child: Text("Exercises")),
-                      Row(
-                        children: [
-                          Icon(Icons.search),
-                          Icon(Icons.more_horiz),
-                        ],
-                      )
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Row(
+                      // mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text("Exercises"),
+                        Row(
+                          children: const [
+                            Icon(Icons.search),
+                            Icon(Icons.more_horiz),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(25.0),
-                  child: ImageSlideshow(
-                    width: double.infinity,
-                    height: 200,
-                    initialPage: 0,
-                    indicatorColor: Colors.blue,
-                    indicatorBackgroundColor: Colors.grey,
-                    onPageChanged: (value) {
-                      debugPrint('Page changed: $value');
-                    },
-                    autoPlayInterval: 3000,
-                    isLoop: true,
-                    children: [
-                      Image.asset(
-                        'assets/images/image_1.jpg',
-                        fit: BoxFit.cover,
-                      ),
-                      Image.asset(
-                        'assets/images/image_2.jpg',
-                        fit: BoxFit.cover,
-                      ),
-                      Image.asset(
-                        'assets/images/image_3.jpg',
-                        fit: BoxFit.cover,
-                      ),
-                    ],
+                  const Positioned(
+                    bottom: -100,
+                    left: 0,
+                    right: 0,
+                    child: ImageSlider(),
                   ),
+                ],
+              ),
+              const SizedBox(
+                height: 115,
+              ),
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 25.0, vertical: 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    Text("Essentails For Beginners"),
+                    InkWell(
+                      child: Text("More"),
+                      onTap: null,
+                    )
+                  ],
                 ),
-              ],
-            ),
-          ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Positioned(
+                top: 0,
+                bottom: 10,
+                child: Imagelist(),
+              ),
+            ],
+          ),
         ),
       ),
     );
