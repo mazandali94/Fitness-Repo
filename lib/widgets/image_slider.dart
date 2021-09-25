@@ -36,7 +36,9 @@ class _ImageSliderState extends State<ImageSlider> {
           items: imgList
               .map(
                 (item) => Center(
-                  child: Image.asset(item),
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.circular(25),
+                      child: Image.asset(item)),
                 ),
               )
               .toList(),

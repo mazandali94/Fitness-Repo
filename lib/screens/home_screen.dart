@@ -1,6 +1,8 @@
+import 'package:fitt_app/widgets/header_with_slider.dart';
 import 'package:fitt_app/widgets/image_list.dart';
 import 'package:fitt_app/widgets/image_list_v.dart';
 import 'package:fitt_app/widgets/image_slider.dart';
+import 'package:fitt_app/widgets/program_card.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -9,45 +11,33 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        iconSize: 30,
+        backgroundColor: Colors.white,
+        currentIndex: 0,
+        selectedItemColor: const Color(0xFFF58591),
+        unselectedItemColor: Colors.grey,
+        elevation: 10.0,
+        items: const [
+          BottomNavigationBarItem(
+            label: "Home",
+            icon: Icon(Icons.home),
+          ),
+          BottomNavigationBarItem(
+            label: "Tranning",
+            icon: Icon(Icons.place),
+          ),
+          BottomNavigationBarItem(
+            label: "Tips",
+            icon: Icon(Icons.face),
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Stack(
-              clipBehavior: Clip.none,
-              fit: StackFit.loose,
-              alignment: AlignmentDirectional.topCenter,
-              children: [
-                Expanded(
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 0.3,
-                    color: const Color(0xFFF58591),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Row(
-                    // mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text("Exercises"),
-                      Row(
-                        children: const [
-                          Icon(Icons.search),
-                          Icon(Icons.more_horiz),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                const Positioned(
-                  bottom: -100,
-                  left: 0,
-                  right: 0,
-                  child: ImageSlider(),
-                ),
-              ],
-            ),
+            const HeaderWithSlider(),
             Container(
               margin: const EdgeInsets.only(top: 120),
               padding:
@@ -72,10 +62,8 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            ImageList(),
-            SingleChildScrollView(
-              child: ImagelistV(),
-            ),
+            const ImageList(),
+            const ProgramCard(),
           ],
         ),
       ),

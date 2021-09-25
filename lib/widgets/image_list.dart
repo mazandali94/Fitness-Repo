@@ -1,9 +1,26 @@
 import 'package:flutter/material.dart';
 
-final List<String> imgList2 = [
-  'assets/images/image_4.jpg',
-  'assets/images/image_5.jpg',
-  'assets/images/image_6.jpg',
+import 'image_card.dart';
+
+final List<Map> imgList2 = [
+  {
+    "cardImage": 'assets/images/image_4.jpg',
+    "tagText": "week 1",
+    "cardText": "lallal",
+    "cardSubText": "aaa"
+  },
+  {
+    "cardImage": 'assets/images/image_5.jpg',
+    "tagText": "week 2",
+    "cardText": "dsdsd",
+    "cardSubText": "www"
+  },
+  {
+    "cardImage": 'assets/images/image_6.jpg',
+    "tagText": "week 3",
+    "cardText": "ewewew",
+    "cardSubText": "gggg"
+  },
 ];
 
 class ImageList extends StatelessWidget {
@@ -11,41 +28,17 @@ class ImageList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemCount: imgList2.length,
-        itemBuilder: (context, count) {
-          return Column(
-            children: [
-              Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  Image.asset(
-                    imgList2[count],
-                  ),
-                  Positioned(
-                    top: 10,
-                    left: 10,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(7),
-                        color: Colors.grey,
-                      ),
-                      child: Text(
-                        "$count week",
-                        style: const TextStyle(
-                          fontSize: 11,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          );
-        },
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: imgList2
+            .map((item) => ImageCard(
+                  cardImage: item["cardImage"],
+                  cardHeader: item["cardText"],
+                  cardSubHeader: item["cardSubText"],
+                  tagText: item["tagText"],
+                ))
+            .toList(),
       ),
     );
   }
