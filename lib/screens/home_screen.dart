@@ -1,7 +1,5 @@
 import 'package:fitt_app/widgets/header_with_slider.dart';
 import 'package:fitt_app/widgets/image_list.dart';
-import 'package:fitt_app/widgets/image_list_v.dart';
-import 'package:fitt_app/widgets/image_slider.dart';
 import 'package:fitt_app/widgets/program_card.dart';
 import 'package:flutter/material.dart';
 
