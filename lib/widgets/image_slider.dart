@@ -37,15 +37,16 @@ class _ImageSliderState extends State<ImageSlider> {
               .map(
                 (item) => Center(
                   child: ClipRRect(
-                      borderRadius: BorderRadius.circular(25),
-                      child: Image.asset(item)),
+                    borderRadius: BorderRadius.circular(25),
+                    child: Image.asset(item),
+                  ),
                 ),
               )
               .toList(),
         ),
         Positioned(
           bottom: 20,
-          left: 40,
+          left: 50,
           child: SizedBox(
             width: 50,
             child: Row(

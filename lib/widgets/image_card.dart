@@ -37,7 +37,7 @@ class ImageCard extends StatelessWidget {
           Stack(
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(10),
                     topRight: Radius.circular(10)),
                 child: Image.asset(
@@ -59,11 +59,11 @@ class ImageCard extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Text(cardHeader),
           ),
           Padding(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Text(cardSubHeader),
           )
         ],
