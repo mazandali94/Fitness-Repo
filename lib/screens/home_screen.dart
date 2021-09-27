@@ -1,15 +1,24 @@
+import 'package:fitt_app/screens/health_tips.dart';
 import 'package:fitt_app/widgets/header_with_slider.dart';
 import 'package:fitt_app/widgets/image_list.dart';
 import 'package:fitt_app/widgets/program_card.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int navselecte = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        // onTap: _navigateToNextScreen(context),
         iconSize: 30,
         backgroundColor: Colors.white,
         currentIndex: 0,

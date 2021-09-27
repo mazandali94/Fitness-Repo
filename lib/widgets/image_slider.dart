@@ -8,7 +8,15 @@ final List<String> imgList = [
 ];
 
 class ImageSlider extends StatefulWidget {
-  const ImageSlider({Key? key}) : super(key: key);
+  const ImageSlider({
+    Key? key,
+    required this.clipRadius,
+    required this.sliderWidth,
+    required this.indicatorAlignment,
+  }) : super(key: key);
+  final double clipRadius;
+  final double sliderWidth;
+  final Alignment indicatorAlignment;
 
   @override
   _ImageSliderState createState() => _ImageSliderState();
@@ -16,11 +24,14 @@ class ImageSlider extends StatefulWidget {
 
 class _ImageSliderState extends State<ImageSlider> {
   int _counter = 0;
+
   // final CarouselController _controller = CarouselController();
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Stack(
+      alignment: widget.indicatorAlignment,
       children: [
         CarouselSlider(
           options: CarouselOptions(
@@ -37,16 +48,19 @@ class _ImageSliderState extends State<ImageSlider> {
               .map(
                 (item) => Center(
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(25),
-                    child: Image.asset(item),
+                    borderRadius: BorderRadius.circular(widget.clipRadius),
+                    child: Image.asset(
+                      item,
+                      width: size.width * widget.sliderWidth,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               )
               .toList(),
         ),
-        Positioned(
-          bottom: 20,
-          left: 50,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 30.0),
           child: SizedBox(
             width: 50,
             child: Row(

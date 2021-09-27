@@ -55,7 +55,11 @@ class HeaderWithSlider extends StatelessWidget {
           bottom: -100,
           left: 0,
           right: 0,
-          child: ImageSlider(),
+          child: ImageSlider(
+            indicatorAlignment: Alignment.bottomLeft,
+            sliderWidth: 0.9,
+            clipRadius: 50,
+          ),
         ),
       ],
     );
