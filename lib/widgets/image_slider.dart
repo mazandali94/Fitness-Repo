@@ -13,10 +13,12 @@ class ImageSlider extends StatefulWidget {
     required this.clipRadius,
     required this.sliderWidth,
     required this.indicatorAlignment,
+    required this.sliderHeight,
   }) : super(key: key);
   final double clipRadius;
   final double sliderWidth;
   final Alignment indicatorAlignment;
+  final double sliderHeight;
 
   @override
   _ImageSliderState createState() => _ImageSliderState();
@@ -52,6 +54,7 @@ class _ImageSliderState extends State<ImageSlider> {
                     child: Image.asset(
                       item,
                       width: size.width * widget.sliderWidth,
+                      height: size.height * widget.sliderHeight,
                       fit: BoxFit.cover,
                     ),
                   ),

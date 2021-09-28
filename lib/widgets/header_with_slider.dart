@@ -59,6 +59,7 @@ class HeaderWithSlider extends StatelessWidget {
             indicatorAlignment: Alignment.bottomLeft,
             sliderWidth: 0.9,
             clipRadius: 50,
+            sliderHeight: 1,
           ),
         ),
       ],
