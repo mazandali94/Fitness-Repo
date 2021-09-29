@@ -16,8 +16,8 @@ class ImageSlider extends StatefulWidget {
     required this.sliderHeight,
   }) : super(key: key);
   final double clipRadius;
-  final double sliderWidth;
   final Alignment indicatorAlignment;
+  final double sliderWidth;
   final double sliderHeight;
 
   @override
@@ -27,16 +27,16 @@ class ImageSlider extends StatefulWidget {
 class _ImageSliderState extends State<ImageSlider> {
   int _counter = 0;
 
-  // final CarouselController _controller = CarouselController();
-
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Stack(
-      alignment: widget.indicatorAlignment,
+      fit: StackFit.expand,
+      // alignment: widget.indicatorAlignment,
       children: [
         CarouselSlider(
           options: CarouselOptions(
+            aspectRatio: 1 / 1,
             viewportFraction: 1,
             autoPlay: true,
             enlargeCenterPage: true,
@@ -64,24 +64,29 @@ class _ImageSliderState extends State<ImageSlider> {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 30.0),
-          child: SizedBox(
-            width: 50,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: imgList
-                  .asMap()
-                  .entries
-                  .map(
-                    (item) => Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                        color: _counter == item.key ? Colors.red : Colors.white,
+          child: Align(
+            alignment: widget.indicatorAlignment,
+            child: SizedBox(
+              width: 65,
+              height: 30,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: imgList
+                    .asMap()
+                    .entries
+                    .map(
+                      (item) => Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color:
+                              _counter == item.key ? Colors.red : Colors.white,
+                        ),
+                        width: 15,
+                        height: 15,
                       ),
-                      width: 15,
-                      height: 15,
-                    ),
-                  )
-                  .toList(),
+                    )
+                    .toList(),
+              ),
             ),
           ),
         ),

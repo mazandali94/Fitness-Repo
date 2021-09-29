@@ -1,8 +1,13 @@
+import 'dart:ui';
+
 import 'package:fitt_app/widgets/image_slider.dart';
 import 'package:fitt_app/widgets/info_card.dart';
 import 'package:fitt_app/widgets/yoga_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 
 class HealthTips extends StatelessWidget {
   const HealthTips({Key? key}) : super(key: key);
@@ -10,151 +15,194 @@ class HealthTips extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // bottomNavigationBar: BottomNavigationBar(
-      //   items: [BottomNavigationBarItem(icon: Icon( Icons.add_link,),],
-      //   onTap: null,backgroundColor: Color(0xFFF58591),
-      // ),
-      body: SingleChildScrollView(
-        child: Column(children: [
-          Stack(clipBehavior: Clip.none, fit: StackFit.loose, children: [
-            Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const ImageSlider(
-                    clipRadius: 0,
-                    sliderWidth: 1,
-                    indicatorAlignment: Alignment.bottomCenter,
-                    sliderHeight: 0.8,
-                  ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.symmetric(vertical: 5),
-                              child: const Text(
-                                "Yoga Basics For Beginners",
-                                style: TextStyle(
-                                    fontSize: 30, fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.symmetric(vertical: 5),
-                              child: Text(
-                                "Keep your Waist in chape",
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.grey[600],
-                                ),
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                Row(
-                                  children: const [
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.amber,
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.amber,
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.amber,
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.amber,
-                                    ),
-                                    Icon(Icons.star),
-                                  ],
-                                ),
-                                const Text("(268 Reviews)"),
-                              ],
-                            ),
-                            Container(
-                              margin: const EdgeInsets.symmetric(vertical: 20),
-                              child: SizedBox(
-                                height: 50,
-                                child: ListView.separated(
-                                    scrollDirection: Axis.horizontal,
-                                    itemBuilder: (context, index) {
-                                      return const InfoCard();
-                                    },
-                                    separatorBuilder: (context, index) {
-                                      return const SizedBox(
-                                        width: 30,
-                                      );
-                                    },
-                                    itemCount: 3),
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.symmetric(vertical: 30),
-                              color: Colors.grey,
-                              height: 0.5,
-                              width: double.infinity,
-                            ),
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 30, horizontal: 10),
-                              child: const Text(
-                                "Main Text is Here",
-                                style: TextStyle(fontSize: 50),
-                              ),
-                            ),
-                          ]),
-                    ),
-                  ),
-                  Stack(clipBehavior: Clip.none, children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: 90, bottom: 20),
-                      color: Colors.grey,
-                      height: 0.5,
-                      width: double.infinity,
-                    ),
-                    const Positioned(
-                      bottom: 15,
-                      left: 20,
-                      child: Text(
-                        "Schedule",
-                        style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFFF58591),
-                            decoration: TextDecoration.underline),
-                      ),
-                    ),
-                  ]),
-                  SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.7,
-                      child: const YogaList()),
-                ]),
-            const Positioned(
-              top: 50,
-              // bottom: 300,
-              left: 20,
-              child: InkWell(
-                onTap: null,
-                child: Icon(
-                  Icons.arrow_back,
-                  size: 30,
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+        height: MediaQuery.of(context).size.height * 0.08,
+        color: Colors.white,
+        child: InkWell(
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.pink[400],
+              borderRadius: BorderRadius.circular(25.0),
+            ),
+            child: const Center(
+                child: Text(
+              "ADD TO PRACTICE",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25.0,
+                  fontWeight: FontWeight.bold),
+            )),
+          ),
+        ),
+      ),
+      backgroundColor: Colors.white,
+      body: NestedScrollView(
+        headerSliverBuilder: (ctx, innerBox) {
+          return [
+            SliverAppBar(
+              leading: const Icon(Icons.arrow_back),
+              backgroundColor: Colors.white,
+              // floating: true,
+              // snap: true,
+              expandedHeight: MediaQuery.of(context).size.height * 0.4,
+              pinned: false,
+              stretch: true,
+              flexibleSpace: const FlexibleSpaceBar(
+                background: ImageSlider(
+                  clipRadius: 0,
+                  sliderWidth: 1,
+                  indicatorAlignment: Alignment.bottomCenter,
+                  sliderHeight: 1,
                 ),
               ),
+            )
+          ];
+        },
+        body: SingleChildScrollView(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(80),
+            child: Padding(
+              padding: const EdgeInsets.all(35.0),
+              child: Column(
+                // mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Yoga Basics For Beginners",
+                    style: TextStyle(
+                      fontSize: 45,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    "Keep your Waist in chape",
+                    style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.grey[400],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: Colors.grey[300],
+                          ),
+                        ],
+                      ),
+                      Text(
+                        "(268 Reviews)",
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.grey[400],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height * 0.15,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        InfoCard(
+                          cardColor: Colors.pink,
+                          cardIcon: Icons.theater_comedy,
+                          cardStat: 'Level',
+                          cardTitle: '1',
+                        ),
+                        InfoCard(
+                          cardColor: Colors.purple[400],
+                          cardIcon: Icons.calendar_today,
+                          cardStat: 'Weeks',
+                          cardTitle: '1',
+                        ),
+                        InfoCard(
+                          cardColor: Colors.amber,
+                          cardIcon: Icons.timer,
+                          cardStat: 'Mins',
+                          cardTitle: '25',
+                        ),
+                      ],
+                    ),
+                  ),
+                  // Container(
+                  //   margin: EdgeInsets.only(top: 40.0),
+                  //   height: 50,
+                  //   child: ListView.separated(
+                  //     scrollDirection: Axis.horizontal,
+                  //     itemBuilder: (context, index) {
+                  //       return const InfoCard();
+                  //     },
+                  //     separatorBuilder: (context, index) {
+                  //       return const SizedBox(
+                  //         width: 60,
+                  //       );
+                  //     },
+                  //     itemCount: 3,
+                  //   ),
+                  // ),
+                  const Divider(
+                    color: Colors.grey,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 30,
+                      horizontal: 10,
+                    ),
+                    child: Text(
+                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen boo",
+                      style: TextStyle(fontSize: 25, color: Colors.grey[700]),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        "Schedule",
+                        style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            color: Colors.pink,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 40.0),
+                      ),
+                      const Divider(
+                        color: Colors.grey,
+                      )
+                    ],
+                  ),
+                  YogaList(),
+                ],
+              ),
             ),
-          ]),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: ElevatedButton(
-                onPressed: null, child: Text("ADD TO PREACTIVE")),
           ),
-        ]),
+        ),
       ),
     );
   }
