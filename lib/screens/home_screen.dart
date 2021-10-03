@@ -1,4 +1,3 @@
-import 'package:fitt_app/screens/health_tips.dart';
 import 'package:fitt_app/widgets/header_with_slider.dart';
 import 'package:fitt_app/widgets/image_list.dart';
 import 'package:fitt_app/widgets/program_card.dart';
@@ -40,11 +39,24 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerbar) {
+          return [
+            SliverAppBar(
+              backgroundColor: Colors.white,
+              // floating: true,
+              // snap: true,
+              expandedHeight: MediaQuery.of(context).size.height * 0.4,
+              pinned: false,
+              stretch: true,
+              flexibleSpace: FlexibleSpaceBar(
+                background: HeaderWithSlider(),
+              ),
+            )
+          ];
+        },
+        body: Column(
           children: [
-            const HeaderWithSlider(),
             Container(
               margin: const EdgeInsets.only(top: 120),
               padding:
@@ -77,3 +89,65 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+//  SingleChildScrollView(
+//         child: Column(
+//           mainAxisSize: MainAxisSize.min,
+//           children: [
+//             const HeaderWithSlider(),
+//             Container(
+//               margin: const EdgeInsets.only(top: 120),
+//               padding:
+//                   const EdgeInsets.symmetric(horizontal: 25.0, vertical: 20.0),
+//               child: Row(
+//                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                 children: const [
+//                   Text(
+//                     "Essentails For Beginners",
+//                     style:
+//                         TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0),
+//                   ),
+//                   InkWell(
+//                     child: Text(
+//                       "More",
+//                       style: TextStyle(
+//                         fontSize: 18.0,
+//                       ),
+//                     ),
+//                     onTap: null,
+//                   )
+//                 ],
+//               ),
+//             ),
+//             const ImageList(),
+//             const ProgramCard(),
+//           ],
+//         ),
+//       ),
+
+// Container(
+//                           margin: const EdgeInsets.only(top: 120),
+//                           padding: const EdgeInsets.symmetric(
+//                               horizontal: 25.0, vertical: 20.0),
+//                           child: Row(
+//                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                             children: const [
+//                               Text(
+//                                 "Essentails For Beginners",
+//                                 style: TextStyle(
+//                                     fontWeight: FontWeight.bold,
+//                                     fontSize: 30.0),
+//                               ),
+//                               InkWell(
+//                                 child: Text(
+//                                   "More",
+//                                   style: TextStyle(
+//                                     fontSize: 18.0,
+//                                   ),
+//                                 ),
+//                                 onTap: null,
+//                               )
+//                             ],
+//                           ),
+//                         ),
+//                         const ImageList(),
+//                         const ProgramCard(),

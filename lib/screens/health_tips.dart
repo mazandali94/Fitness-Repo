@@ -75,7 +75,7 @@ class HealthTips extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Text(
@@ -85,26 +85,26 @@ class HealthTips extends StatelessWidget {
                       color: Colors.grey[400],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Row(
                     children: [
                       Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.star,
                             color: Colors.amber,
                           ),
-                          Icon(
+                          const Icon(
                             Icons.star,
                             color: Colors.amber,
                           ),
-                          Icon(
+                          const Icon(
                             Icons.star,
                             color: Colors.amber,
                           ),
-                          Icon(
+                          const Icon(
                             Icons.star,
                             color: Colors.amber,
                           ),
@@ -123,13 +123,13 @@ class HealthTips extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Container(
+                  SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height * 0.15,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        InfoCard(
+                        const InfoCard(
                           cardColor: Colors.pink,
                           cardIcon: Icons.theater_comedy,
                           cardStat: 'Level',
@@ -141,7 +141,7 @@ class HealthTips extends StatelessWidget {
                           cardStat: 'Weeks',
                           cardTitle: '1',
                         ),
-                        InfoCard(
+                        const InfoCard(
                           cardColor: Colors.amber,
                           cardIcon: Icons.timer,
                           cardStat: 'Mins',
@@ -183,7 +183,7 @@ class HealthTips extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
-                    children: [
+                    children: const [
                       Text(
                         "Schedule",
                         style: TextStyle(
@@ -192,12 +192,12 @@ class HealthTips extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             fontSize: 40.0),
                       ),
-                      const Divider(
+                      Divider(
                         color: Colors.grey,
                       )
                     ],
                   ),
-                  YogaList(),
+                  const YogaList(),
                 ],
               ),
             ),

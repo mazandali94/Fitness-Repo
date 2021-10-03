@@ -11,8 +11,8 @@ class HeaderWithSlider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       clipBehavior: Clip.none,
-      fit: StackFit.loose,
-      alignment: AlignmentDirectional.topCenter,
+      // fit: StackFit.expand,
+      // alignment: AlignmentDirectional.topCenter,
       children: [
         Expanded(
           child: Container(
@@ -57,7 +57,7 @@ class HeaderWithSlider extends StatelessWidget {
           right: 0,
           child: ImageSlider(
             indicatorAlignment: Alignment.bottomLeft,
-            sliderWidth: 0.9,
+            sliderWidth: 1,
             clipRadius: 50,
             sliderHeight: 1,
           ),

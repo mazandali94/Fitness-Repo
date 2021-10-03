@@ -1,4 +1,5 @@
 import 'package:fitt_app/screens/health_tips.dart';
+import 'package:fitt_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HealthTips(),
+      home: HomeScreen(),
     );
   }
 }
