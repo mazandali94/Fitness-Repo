@@ -14,12 +14,16 @@ class ImageSlider extends StatefulWidget {
     required this.sliderWidth,
     required this.indicatorAlignment,
     required this.sliderHeight,
+    this.sliderFit = StackFit.loose,
+    this.aspectRatio = 1 / 1,
   }) : super(key: key);
+
   final double clipRadius;
   final Alignment indicatorAlignment;
   final double sliderWidth;
   final double sliderHeight;
-
+  final StackFit sliderFit;
+  final double aspectRatio;
   @override
   _ImageSliderState createState() => _ImageSliderState();
 }
@@ -31,12 +35,12 @@ class _ImageSliderState extends State<ImageSlider> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Stack(
-      fit: StackFit.expand,
+      fit: widget.sliderFit,
       // alignment: widget.indicatorAlignment,
       children: [
         CarouselSlider(
           options: CarouselOptions(
-            aspectRatio: 1 / 1,
+            aspectRatio: widget.aspectRatio,
             viewportFraction: 1,
             autoPlay: true,
             enlargeCenterPage: true,
@@ -62,10 +66,11 @@ class _ImageSliderState extends State<ImageSlider> {
               )
               .toList(),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 30.0),
-          child: Align(
-            alignment: widget.indicatorAlignment,
+        Align(
+          alignment: widget.indicatorAlignment,
+          child: Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 15.0, vertical: 30.0),
             child: SizedBox(
               width: 65,
               height: 30,

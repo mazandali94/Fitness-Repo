@@ -41,7 +41,10 @@ class HealthTips extends StatelessWidget {
         headerSliverBuilder: (ctx, innerBox) {
           return [
             SliverAppBar(
-              leading: const Icon(Icons.arrow_back),
+              leading: InkWell(
+                child: Icon(Icons.arrow_back),
+                onTap: () => Navigator.pop(context),
+              ),
               backgroundColor: Colors.white,
               // floating: true,
               // snap: true,
@@ -54,6 +57,7 @@ class HealthTips extends StatelessWidget {
                   sliderWidth: 1,
                   indicatorAlignment: Alignment.bottomCenter,
                   sliderHeight: 1,
+                  sliderFit: StackFit.expand,
                 ),
               ),
             )
