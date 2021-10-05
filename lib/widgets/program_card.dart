@@ -15,7 +15,7 @@ class ProgramCard extends StatelessWidget {
             top: 10,
             left: 10,
             child: Container(
-              padding: EdgeInsets.all(8.5),
+              padding: const EdgeInsets.all(8.5),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: Colors.amber,

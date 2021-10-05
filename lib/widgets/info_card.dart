@@ -40,14 +40,14 @@ class InfoCard extends StatelessWidget {
           children: [
             Text(
               cardTitle,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.grey,
                 fontSize: 25.0,
               ),
             ),
             Text(
               cardStat,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 25.0,
               ),
             ),

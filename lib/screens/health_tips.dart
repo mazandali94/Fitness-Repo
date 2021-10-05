@@ -42,7 +42,7 @@ class HealthTips extends StatelessWidget {
           return [
             SliverAppBar(
               leading: InkWell(
-                child: Icon(Icons.arrow_back),
+                child: const Icon(Icons.arrow_back),
                 onTap: () => Navigator.pop(context),
               ),
               backgroundColor: Colors.white,

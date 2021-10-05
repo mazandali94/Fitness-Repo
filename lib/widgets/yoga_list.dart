@@ -40,6 +40,7 @@ class ListDetails extends StatelessWidget {
   final int indexer;
   @override
   Widget build(BuildContext context) {
+    var textStyle = const TextStyle(color: Colors.grey, fontSize: 17);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       child: Row(
@@ -56,7 +57,7 @@ class ListDetails extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
           Column(
@@ -64,7 +65,7 @@ class ListDetails extends StatelessWidget {
             children: [
               Text(
                 "DAY $indexer",
-                style: TextStyle(
+                style: const TextStyle(
                     color: Color(0xFFF58591),
                     fontWeight: FontWeight.bold,
                     fontSize: 17),
@@ -74,10 +75,10 @@ class ListDetails extends StatelessWidget {
                 style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
               ),
               Container(
-                margin: EdgeInsets.only(top: 10),
+                margin: const EdgeInsets.only(top: 10),
                 child: Text(
                   "$indexer*3 min",
-                  style: TextStyle(color: Colors.grey, fontSize: 17),
+                  style: textStyle,
                 ),
               )
             ],

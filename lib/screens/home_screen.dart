@@ -4,7 +4,7 @@ import 'package:fitt_app/widgets/program_card.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
-  HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
